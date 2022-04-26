@@ -1,0 +1,123 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Get permissions success.",
+	"data": {
+		"result": [
+			{
+				"permissionId": 101,
+				"permissionName": "CG_UserSearch",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 102,
+				"permissionName": "CG_UserNew",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 103,
+				"permissionName": "CG_UserDel",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 104,
+				"permissionName": "CG_UserEdit",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 201,
+				"permissionName": "CG_RoleSearch",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 202,
+				"permissionName": "CG_RoleNew",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 203,
+				"permissionName": "CG_RoleEdit",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 204,
+				"permissionName": "CG_RoleDel",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 401,
+				"permissionName": "CG_SettingEdit",
+				"permissionClass": "System",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 501,
+				"permissionName": "CG_ServiceLogSearch",
+				"permissionClass": "Log",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 507,
+				"permissionName": "CG_ManagerLogSearch",
+				"permissionClass": "Log",
+				"permissionType": 1
+      },
+      {
+				"permissionId": 508,
+				"permissionName": "CG_DebugLogSearch",
+				"permissionClass": "Log",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 601,
+				"permissionName": "CG_ApplicationSearch",
+				"permissionClass": "Application",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 602,
+				"permissionName": "CG_ApplicationNew",
+				"permissionClass": "Application",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 603,
+				"permissionName": "CG_ApplicationDel",
+				"permissionClass": "Application",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 604,
+				"permissionName": "CG_ApplicationEdit",
+				"permissionClass": "Application",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 605,
+				"permissionName": "CG_ApplicationDelToken",
+				"permissionClass": "Application",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 606,
+				"permissionName": "CG_ApplicationSetPermission",
+				"permissionClass": "Application",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 607,
+				"permissionName": "CG_ApplicationGenApiKey",
+				"permissionClass": "Application",
+				"permissionType": 1
+			}
+		],
+		"amount": 19
+	}
+}

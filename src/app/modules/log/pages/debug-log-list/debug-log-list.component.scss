@@ -1,0 +1,16 @@
+@media screen and (max-width: 959px) {
+  .mat-column-action {
+    justify-content: flex-start !important;
+  }
+  .mat-cell.mat-column-fileSize {
+    justify-content: flex-start !important;
+  }
+}
+
+.mat-column-action {
+  justify-content: flex-end;
+}
+
+.mat-cell.mat-column-fileSize {
+  justify-content: flex-end;
+}

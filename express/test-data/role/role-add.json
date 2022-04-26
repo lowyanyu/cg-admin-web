@@ -1,0 +1,10 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Create role success.",
+	"data": {
+		"roleId": 204,
+		"roleName": "test123",
+		"desc": "123",
+		"permissions": []
+	}
+}

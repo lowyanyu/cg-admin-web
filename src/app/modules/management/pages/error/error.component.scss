@@ -1,0 +1,8 @@
+.error-body {
+  &__title, &__label {
+    margin-right: 0.5em;
+  }
+  &__title, &__label::after {
+    content: ':'
+  }
+}

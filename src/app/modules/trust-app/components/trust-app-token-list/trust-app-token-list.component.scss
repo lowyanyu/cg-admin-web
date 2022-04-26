@@ -1,0 +1,17 @@
+.mat-column-token-text {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 959px) {
+  .mat-column-action {
+    justify-content: flex-start !important;
+  }
+
+}
+
+.mat-column-action {
+  justify-content: flex-end;
+}

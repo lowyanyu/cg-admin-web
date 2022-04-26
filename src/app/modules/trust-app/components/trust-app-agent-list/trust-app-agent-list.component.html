@@ -1,0 +1,53 @@
+<div fxLayout="column" fxLayoutGap="30px">
+  <div fxFlex="1 1 auto" *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationEdit">
+    <form [formGroup]="addForm" #formDirective="ngForm" class="form form--display-inline"
+        fxLayout="column" fxLayoutGap="30px" fxLayout.gt-xs="row wrap">
+      <div fxFlex="1 1 auto">
+        <mat-form-field class="form__field" appearance="outline">
+          <input matInput placeholder="IP" formControlName="agentIp" required>
+          <mat-error *ngIf="addForm.controls['agentIp'].hasError('required') || (addForm.controls['agentIp'].touched && !addForm.controls['agentIp'].hasError('pattern'))">
+            {{ 'Message.notify.ip' | translate}}
+          </mat-error>
+          <mat-error *ngIf="addForm.controls['agentIp'].hasError('pattern')">{{ 'Message.warn.ip' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto">
+        <mat-form-field class="form__field" appearance="outline">
+          <input matInput formControlName="desc"
+              placeholder="{{ 'general.description' | translate}}" >
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto" fxFlexAlign.gt-xs="center">
+        <button mat-raised-button type="button" class="btn btn--theme-primary form__btn"
+            (click)="submit()" ><i class="material-icons">add</i>{{ 'general.add' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div fxFlex="1 1 auto">
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="ip">
+        <mat-header-cell *matHeaderCellDef>{{ 'general.ip' | translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'general.ip' | translate}} : </span> {{element.agentIp}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="desc">
+        <mat-header-cell *matHeaderCellDef>{{ 'general.description' | translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'general.description' | translate}} : </span> {{element.desc}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="rwd-title" fxHide.gt-sm>{{ 'general.operation' | translate}} : </span>
+          <button mat-stroked-button type="button" *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationEdit" (click)="openDelDialog(element)">
+            <i class="material-icons">delete</i>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-md></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>
+

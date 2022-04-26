@@ -1,0 +1,77 @@
+<div class="dialog dialog--theme-info">
+  <h1 class="dialog__title" mat-dialog-title>{{ 'general.detail' | translate}}</h1>
+
+  <div class="dialog__content" mat-dialog-content *ngIf="serviceLogData">
+    <div fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="10px">
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'Log.date' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{serviceLogData.logDate | date:'yyyy/MM/dd HH:mm:ss'}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'Application.title' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{serviceLogData.account.userAccount}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'Application.info' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{serviceLogData.appInfo}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'general.ip' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{serviceLogData.clientIp}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'Log.class' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{ 'Log.service_class.' + serviceLogData.logClass | translate}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'Log.operation' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{ 'Log.service_operation.' + serviceLogData.operation | translate}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'general.status' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          {{ 'Log.service_errorCode_type.' + ((serviceLogData.respCode === 0)? 1 : 2) | translate}}
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row">
+        <div class="dialog__label" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 130px">
+          {{ 'Log.response' | translate}}
+        </div>
+        <div fxFlex="1 1 auto">
+          [ {{serviceLogData.respCode}} ] {{serviceLogData.respMsg}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog__actions" mat-dialog-actions>
+    <button class="btn btn--theme-basic" mat-stroked-button type="button"
+      id="serviceLogDetailDialogCloseBtn" name="serviceLogDetailDialogCloseBtn" (click)="close()">{{ 'general.close' | translate}}</button>
+  </div>
+</div>

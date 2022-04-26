@@ -1,0 +1,28 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around stretch"
+  [className]="(delData.length !== 0) ? 'dialog dialog--theme-danger' :  'dialog dialog--theme-warn'">
+  <ng-container *ngIf="delData.length !== 0; else elseBlock">
+    <div class="dialog__title" fxFlex="1 1 auto">
+      <i class="material-icons">error</i>&nbsp;&nbsp;{{ 'Role.alert' | translate}}<br/>
+    </div>
+    <div fxFlex="1 1 auto">
+      <div class="dialog__label">{{ 'general.name' | translate}}:
+        <span *ngFor="let d of delData; let last = last">
+            {{d.roleName}}<span *ngIf="!last">, </span>
+        </span>
+      </div>
+    </div>
+    <div class="dialog__actions" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="10px" fxLayout.gt-xs="row" fxLayoutGap="10px">
+      <button mat-stroked-button type="button" class="btn btn--theme-basic" id="roleDelDialogCloseBtn" name="roleDelDialogCloseBtn" (click)="close()">{{ 'general.cancel' | translate}}</button>
+      <button mat-stroked-button type="button" class="btn btn--theme-danger" id="roleDelDialogDelBtn" name="roleDelDialogDelBtn" (click)="delete()">{{ 'general.confirm' | translate}}</button>
+    </div>
+  </ng-container>
+
+  <ng-template #elseBlock>
+    <div class="dialog__title" fxFlex="1 1 auto">
+      <i class="material-icons">not_interested</i>&nbsp;&nbsp;{{ 'Role.notify' | translate}}
+    </div>
+    <div class="dialog__actions" fxFlex="1 1 40px" fxLayout="column" fxLayoutGap="10px" fxLayout.gt-xs="row" fxLayoutGap="10px">
+      <button mat-stroked-button type="button" class="btn btn--theme-basic" id="roleDelDialogCloseBtn" name="roleDelDialogCloseBtn" (click)="close()">{{ 'general.close' | translate}}</button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,9 @@
+<div class="dialog dialog--theme-info" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around stretch">
+  <div class="dialog__title" fxFlex="1 1 auto">
+    <i class="material-icons">report</i>&nbsp;&nbsp;{{'Application.exportFileAlert' | translate}}
+  </div>
+  <div class="dialog__actions" fxFlex="1 1 40px" fxLayout="column" fxLayoutGap="10px" fxLayout.gt-xs="row" fxLayoutGap="10px">
+    <button mat-stroked-button type="button" class="btn btn--theme-basic" id="exTrustAppDialogCloseBtn" name="exTrustAppDialogCloseBtn" (click)="close()">{{ 'general.cancel' | translate}}</button>
+    <button mat-stroked-button type="button" class="btn btn--theme-primary" id="exTrustAppDialogExBtn" name="exTrustAppDialogExBtn" (click)="submit()">{{ 'general.confirm' | translate}}</button>
+  </div>
+</div>

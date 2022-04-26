@@ -1,0 +1,65 @@
+{
+  "errorCode": 0,
+  "errorMessage": "Get application key success.",
+  "data": {
+  "amount": 2,
+  "result":[
+      {
+        "clusterId": 200,
+        "clusterName": "test",
+        "slots" : [
+          {
+            "slotId": 200,
+            "slotName": "TEST-1",
+            "hsmName": "HSM1",
+            "isSelectAll": 1,
+            "keys":[
+              {
+                "keyId":200,
+                "label":"testA",
+                "status":0,
+                "type":0,
+                "keyLength":32,
+                "isPrivate":0,
+                "creator":"test",
+                "createDate":"2019/07/16 17:05:24",
+                "refreshDate":"2019/07/16 17:05:24",
+                "keyInfo":{}
+            },
+            {
+              "keyId":201,
+              "label":"testB",
+              "status":0,
+              "type":0,
+              "keyLength":16,
+              "isPrivate":0,
+              "creator":"test2",
+              "createDate":"2019/07/29 17:05:24",
+              "refreshDate":"2019/07/29 17:05:24",
+              "keyInfo":{}
+            }
+            ]
+          }
+        ]
+      },
+      {
+        "clusterId": 201,
+        "clusterName": "test2",
+        "slots" : [
+          {
+            "slotId": 202,
+            "slotName": "TEST-2",
+            "hsmName": "HSM1",
+            "isSelectAll": 0,
+            "keys":[
+
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+

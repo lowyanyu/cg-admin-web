@@ -1,0 +1,57 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Query applications success.",
+	"data": {
+    "amount": 6,
+		"result": [
+			{
+				"appId": 200,
+        "appName": "test",
+        "appType": 1,
+				"apiKey": "Not init apiKey",
+				"desc": "",
+				"tokenNum": 0
+      },
+      {
+				"appId": 201,
+        "appName": "test2",
+        "appType": 2,
+				"apiKey": "Not init apiKey",
+				"desc": "",
+				"tokenNum": 0
+			},
+      {
+				"appId": 202,
+        "appName": "test3",
+        "appType": 2,
+				"apiKey": "Not init apiKey",
+				"desc": "",
+				"tokenNum": 0
+			},
+      {
+				"appId": 203,
+        "appName": "test4",
+        "appType": 1,
+				"apiKey": "Not init apiKey",
+				"desc": "",
+				"tokenNum": 0
+			},
+      {
+				"appId": 204,
+        "appName": "test5",
+        "appType": 2,
+				"apiKey": "Not init apiKey",
+				"desc": "",
+				"tokenNum": 0
+			},
+      {
+				"appId": 205,
+        "appName": "test6",
+        "appType": 1,
+				"apiKey": "Not init apiKey",
+				"desc": "",
+				"tokenNum": 0
+			}
+		]
+	}
+}

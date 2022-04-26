@@ -1,0 +1,21 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Edit roles success. op : delete",
+	"data": {
+		"amount": 2,
+		"result": [
+			{
+				"targetId": 203,
+				"targetName": "test",
+				"errorCode": 0,
+				"errorMessage": "delete role success."
+			},
+			{
+				"targetId": 204,
+				"targetName": "test123",
+				"errorCode": 0,
+				"errorMessage": "delete role success."
+			}
+		]
+	}
+}

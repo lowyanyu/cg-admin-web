@@ -1,0 +1,24 @@
+{
+  "errorCode": 0,
+  "errorMessage": "Get roles success",
+  "data": {
+    "result": [
+			{
+				"roleId": 200,
+				"roleName": "super",
+				"desc": "系統管理人員"
+			},
+			{
+				"roleId": 201,
+				"roleName": "op",
+				"desc": "系統操作人員"
+			},
+			{
+				"roleId": 202,
+				"roleName": "api",
+				"desc": "API使用人員"
+			}
+		],
+		"amount": 3
+  }
+}

@@ -1,0 +1,23 @@
+<div class="dialog dialog--theme-form">
+  <h1 class="dialog__title" mat-dialog-title>{{ 'Application.importApp' | translate}}</h1>
+  <div class="dialog__content" mat-dialog-content>
+    <form [formGroup]="uploadForm" id="trustAppImportForm" name="trustAppImportForm" class="form dialog__form"
+      fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="10px">
+      <div fxFlex="1 1 auto">
+        <button type="button" mat-raised-button class="btn btn--theme-basic" (click)="fileInput.click()">
+          <i class="material-icons">create_new_folder</i>
+          {{ 'general.chooseFile' | translate}}
+        </button>
+        <span class="file-name">{{filePath}}</span>
+        <input hidden type="file" #fileInput (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+        <mat-error *ngIf="uploadForm.controls['isFileUpload'].touched"> {{ 'Message.notify.trustAppFile' | translate}}</mat-error>
+      </div>
+    </form>
+  </div>
+  <div class="dialog__actions" mat-dialog-actions>
+    <button class="btn btn--theme-basic" mat-stroked-button type="button"
+        id="trustAppImDialogCloseBtn" name="trustAppImDialogCloseBtn" mat-dialog-close>{{ 'general.cancel' | translate}}</button>
+    <button class="btn btn--theme-primary" mat-stroked-button type="button"
+        id="trustAppImDialogImBtn" name="trustAppImDialogImBtn" (click)="submit()">{{ 'general.confirm' | translate}}</button>
+  </div>
+</div>

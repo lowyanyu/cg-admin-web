@@ -1,0 +1,9 @@
+<div class="dialog dialog--theme-info" fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="space-around stretch">
+  <div class="dialog__title" fxFlex="1 1 auto">
+    <i class="material-icons">report</i>&nbsp;&nbsp;{{'Application.apiKeyAlert' | translate}}
+  </div>
+  <div class="dialog__actions" fxFlex="1 1 40px" fxLayout="column" fxLayoutGap="10px" fxLayout.gt-xs="row" fxLayoutGap="10px">
+    <button mat-stroked-button type="button" class="btn btn--theme-basic" id="apiKeyDialogCloseBtn" name="apiKeyDialogCloseBtn" (click)="close()">{{ 'general.cancel' | translate}}</button>
+    <button mat-stroked-button type="button" class="btn btn--theme-primary" id="apiKeyDialogDownBtn" name="apiKeyDialogDownBtn" (click)="submit()">{{ 'general.confirm' | translate}}</button>
+  </div>
+</div>

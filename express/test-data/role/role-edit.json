@@ -1,0 +1,59 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Edit role success.",
+	"data": {
+		"roleId": 203,
+		"roleName": "test",
+		"desc": "",
+		"permissions": [
+			{
+				"permissionId": 101,
+				"permissionName": "CG_UserSearch",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 102,
+				"permissionName": "CG_UserNew",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 103,
+				"permissionName": "CG_UserDel",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 104,
+				"permissionName": "CG_UserEdit",
+				"permissionClass": "User",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 201,
+				"permissionName": "CG_RoleSearch",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 202,
+				"permissionName": "CG_RoleNew",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 203,
+				"permissionName": "CG_RoleEdit",
+				"permissionClass": "Role",
+				"permissionType": 1
+			},
+			{
+				"permissionId": 204,
+				"permissionName": "CG_RoleDel",
+				"permissionClass": "Role",
+				"permissionType": 1
+			}
+		]
+	}
+}

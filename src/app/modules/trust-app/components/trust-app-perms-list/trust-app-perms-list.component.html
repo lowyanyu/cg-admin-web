@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row" *ngIf="!isStepperSet">
+    <button mat-raised-button class="btn btn--theme-primary" type="button" id="trustAppEditPermsBtn" name="trustAppEditPermsBtn"
+        *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationSetPermission" (click)="submit()">{{ 'general.edit' | translate}}</button>
+  </div>
+  <div fxFlex="1 1 auto">
+    <mat-table [dataSource]="dataSource" id="trustAppPermsTable" name="trustAppPermsTable">
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation();"
+                        (change)="$event ? selection.toggle(row) : null; getSelectedCheckBoxes();"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="permission">
+        <mat-header-cell *matHeaderCellDef>{{ 'general.permission' | translate}}</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ 'Application.PermissionName.' + element.permissionName | translate}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-md></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+</div>

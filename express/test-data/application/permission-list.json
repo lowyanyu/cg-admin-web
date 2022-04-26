@@ -1,0 +1,129 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Get permissions success.",
+	"data": {
+		"result": [
+			{
+				"permissionId": 301,
+				"permissionName": "Doc_GroupSearch",
+				"permissionClass": "Group",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 302,
+				"permissionName": "Doc_GroupNew",
+				"permissionClass": "Group",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 303,
+				"permissionName": "Doc_GroupEdit",
+				"permissionClass": "Group",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 304,
+				"permissionName": "Doc_GroupDel",
+				"permissionClass": "Group",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 401,
+				"permissionName": "Doc_DocumentSearch",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 402,
+				"permissionName": "Doc_DocumentNew",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 403,
+				"permissionName": "Doc_DocumentEdit",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 404,
+				"permissionName": "Doc_DocumentDel",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 405,
+				"permissionName": "Doc_DocumentDesign",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 406,
+				"permissionName": "Doc_DocumentPreview",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 407,
+				"permissionName": "Doc_DocumentDownload",
+				"permissionClass": "Document",
+				"permissionType": 3
+			},
+			{
+				"permissionId": 801,
+				"permissionName": "Doc_ServerSign",
+				"permissionClass": "Sign",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 802,
+				"permissionName": "Doc_ExtSign",
+				"permissionClass": "Sign",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 901,
+				"permissionName": "Doc_WorkstageCreate",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 902,
+				"permissionName": "Doc_WorkstageFinish",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 903,
+				"permissionName": "Doc_WorkstageReject",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 904,
+				"permissionName": "Doc_AddFreeHand",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 905,
+				"permissionName": "Doc_AddPicture",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 906,
+				"permissionName": "Doc_AddText",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			},
+			{
+				"permissionId": 907,
+				"permissionName": "Doc_WorkstageCus",
+				"permissionClass": "Workstage",
+				"permissionType": 2
+			}
+		],
+		"amount": 20
+	}
+}

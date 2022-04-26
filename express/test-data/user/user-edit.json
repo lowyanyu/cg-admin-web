@@ -1,0 +1,19 @@
+{
+  "errorCode": 0,
+  "errorMessage": "Edit user success.",
+  "data": {
+    "userId": 207,
+    "userAccount": "jessica",
+    "userName": "Jessica",
+    "phone": "0925760885",
+    "desc": "測試修改密碼",
+    "email": "jessica@changingtec.com",
+    "status": 1,
+    "roles": [
+      {
+        "roleId": 200,
+        "roleName": "super"
+      }
+    ]
+  }
+}

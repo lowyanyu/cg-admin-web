@@ -1,0 +1,106 @@
+<div fxLayout="column" fxLayoutGap="5px" *ngIf="outlet.isActivated === false">
+  <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 55px">
+    <div fxLayout="column" fxLayoutGap="15px" fxLayout.gt-xs="row">
+      <div>
+        <button mat-raised-button class="btn btn--theme-primary" (click)="addUser()" *hasPermission="MANAGEMENT_PERMISSION.CG_UserNew">
+          <i class="material-icons">add</i>{{ 'general.add' | translate}}
+        </button>
+      </div>
+      <div *ngIf="canDelete$ | async">
+        <button mat-raised-button id="userMutiDelBtn" name="userMutiDelBtn"
+            class="btn btn--theme-basic" (click)="openDelDialog(getSelectedCheckBoxes())" *hasPermission="MANAGEMENT_PERMISSION.CG_UserDel">
+          <i class="material-icons">remove</i>{{ 'general.delete' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="1 1 auto">
+    <mat-card>
+      <mat-table [dataSource]="userItems$ | async">
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && (isAllSelected() | async)"
+                          [indeterminate]="(hasSelected() | async) && !(isAllSelected() | async)"
+                          *ngIf="userTotal$ | async">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="selectionChange($event.checked, row)"
+                          [checked]="isSelected(row)"
+                          *ngIf="row.userAccount !== loginUser && row.userAccount !== 'admin'">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="userAccount">
+          <mat-header-cell *matHeaderCellDef> {{ 'general.account' | translate}} </mat-header-cell>
+          <mat-cell *matCellDef="let user"><span class="rwd-title" fxHide.gt-sm>{{ 'general.account' | translate}} : </span> {{user.userAccount}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="userName">
+          <mat-header-cell *matHeaderCellDef> {{ 'general.name' | translate}} </mat-header-cell>
+          <mat-cell *matCellDef="let user"><span class="rwd-title" fxHide.gt-sm>{{ 'general.name' | translate}} : </span> {{user.userName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef> {{ 'general.phone' | translate}} </mat-header-cell>
+          <mat-cell *matCellDef="let user"><span class="rwd-title" fxHide.gt-sm>{{ 'general.phone' | translate}} : </span> {{user.phone}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> {{ 'general.email' | translate}} </mat-header-cell>
+          <mat-cell *matCellDef="let user"><span class="rwd-title" fxHide.gt-sm>{{ 'general.email' | translate}} : </span> {{user.email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef> {{ 'general.role' | translate}} </mat-header-cell>
+          <mat-cell *matCellDef="let user"><span class="rwd-title" fxHide.gt-sm>{{ 'general.role' | translate}} : </span> {{user.roles[0].roleName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="desc">
+          <mat-header-cell *matHeaderCellDef> {{ 'general.description' | translate}} </mat-header-cell>
+          <mat-cell *matCellDef="let user"><span class="rwd-title" fxHide.gt-sm>{{ 'general.description' | translate}} : </span> {{user.desc}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.operation' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let user">
+            <button mat-icon-button [matMenuTriggerFor]="menu" #userToggleMenuBtn>
+              <i class="material-icons">more_horiz</i>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item id="userEditBtn" name="userEditBtn"
+                  (click)="editUser(user)" *hasPermission="MANAGEMENT_PERMISSION.CG_UserEdit">
+                {{ 'general.edit' | translate}}
+              </button>
+              <ng-container *ngIf="user.userAccount !== loginUser">
+                <button mat-menu-item id="userDelBtn" name="userDelBtn"
+                    (click)="openDelDialog(user)" *hasPermission="MANAGEMENT_PERMISSION.CG_UserDel">
+                  {{ 'general.delete' | translate}}
+                </button>
+              </ng-container>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+          <mat-cell *matCellDef="let element">
+            {{ 'general.noData' | translate}}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns$ | async" fxHide.lt-md></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns$ | async; when: showData"></mat-row>
+
+        <mat-row *matRowDef="let row; columns: ['noData']; when: !showData"
+            [@detailExpand]="transition$ | async"></mat-row>
+      </mat-table>
+      <cg-paginator [total]="userTotal$ | async" [pagination]="pagination$ | async" (pageChange)="changePage($event)"></cg-paginator>
+    </mat-card>
+  </div>
+</div>
+
+<router-outlet #outlet="outlet" (deactivate)="resetPage()"></router-outlet>

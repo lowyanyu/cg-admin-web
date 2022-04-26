@@ -1,0 +1,28 @@
+<div fxLayout="column" fxLayoutGap="30px">
+  <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 55px" *ngIf="application">
+    <div fxLayout="column" fxLayoutGap="15px">
+      <div>{{ 'general.name' | translate}} | {{application.appName}}</div>
+      <div>{{ 'general.description' | translate}} | {{application.desc}}</div>
+    </div>
+  </div>
+
+  <div fxFlex="1 1 auto">
+    <mat-card>
+      <mat-tab-group mat-stretch-tabs *ngIf="application" (selectedTabChange)="tabChanged($event)">
+        <!-- 信任IP -->
+        <mat-tab label="{{ 'Application.agent' | translate}}" aria-label="agent">
+          <app-trust-app-agent-list *ngIf="chooseTab === 'agent'" [appId]="appId"></app-trust-app-agent-list>
+        </mat-tab>
+        <!-- Active Token -->
+        <!-- <mat-tab label="Active Token" aria-label="token">
+          <app-trust-app-token-list *ngIf="chooseTab === 'token'" [appId]="appId" (deletedToken)="refresh()"></app-trust-app-token-list>
+        </mat-tab> -->
+        <!-- 權限 -->
+        <mat-tab label="{{ 'general.permission' | translate}}" aria-label="permission" *ngIf="application.appType === APP_TYPE.GENERAL">
+          <app-trust-app-perms-list *ngIf="chooseTab === 'permission'" [appId]="appId" [isStepperSet]="false"></app-trust-app-perms-list>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>
+

@@ -1,0 +1,46 @@
+<div class="dialog dialog--theme-form">
+  <h1 class="dialog__title" mat-dialog-title>{{'Application.edit' | translate}}</h1>
+  <div class="dialog__content" mat-dialog-content>
+    <form [formGroup]="editForm" id="editTrustAppForm" name="editTrustAppForm" class="form dialog__form"
+        fxFlex="1 1 auto" fxLayout="column"  fxLayoutGap="10px">
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="5px">
+        <div class="required" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 100px">
+          <label class="form__label">{{ 'general.name' | translate}}</label>
+        </div>
+        <div fxFlex="1 1 auto">
+          <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+            <input matInput formControlName="appName" id="trustAppInput" name="trustAppInput" required>
+            <mat-error>{{ 'Message.notify.name' | translate}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="5px">
+        <div class="required" fxFlex="1 1 auto" fxFlex.gt-xs="1 1 100px">
+          <label class="form__label">{{ 'general.type' | translate}}</label>
+        </div>
+        <div fxFlex="1 1 auto">
+          <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+            <input matInput formControlName="appType" id="trustAppType" name="trustAppType"
+              value="{{ 'Application.type.' + this.editApp.appType | translate}}" [readonly]="true">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="5px">
+        <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 100px">
+          <label class="form__label">{{ 'general.description' | translate}}</label>
+        </div>
+        <div fxFlex="1 1 auto">
+          <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+            <textarea matInput formControlName="desc" id="trustAppDesc" name="trustAppDesc"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="dialog__actions" mat-dialog-actions>
+    <button class="btn btn--theme-basic" mat-stroked-button type="button"
+          id="editTrustAppDialogCloseBtn" name="editTrustAppDialogCloseBtn" mat-dialog-close>{{ 'general.cancel' | translate}}</button>
+    <button class="btn btn--theme-primary" mat-stroked-button type="button"
+        id="editTrustAppDialogEditBtn" name="editTrustAppDialogEditBtn" (click)="submit()">{{ 'general.confirm' | translate}}</button>
+  </div>
+</div>

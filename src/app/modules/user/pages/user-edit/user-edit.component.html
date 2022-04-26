@@ -1,0 +1,90 @@
+<mat-card class="card">
+  <form class="form form--size-lg" [formGroup]="editForm" (ngSubmit)="submit()" id="editForm" name="editForm" fxLayout="column">
+    <div fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row">
+      <div class="form__group required" fxLayout="column" fxFlex="1 1 auto">
+        <label class="form__label">{{ 'general.account' | translate}}</label>
+        <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+          <input matInput id="userAccount" name="userAccount" formControlName="userAccount" required >
+          <mat-error>{{ 'Message.notify.account' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form__group required" fxLayout="column" fxFlex="1 1 auto">
+        <label class="form__label">{{ 'general.name' | translate}}</label>
+        <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+          <input matInput id="userName" name="userName" formControlName="userName" required>
+          <mat-error>{{ 'Message.notify.name' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.password' | translate}}</label>
+      <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+        <input matInput id="userPwd" name="userPwd" [type]="hide ? 'password' : 'text'" formControlName="userPwd" autocomplete="off">
+        <button type="button" *ngIf="editForm.controls['userPwd'].value != ''" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>
+          <span>{{ 'Message.notify.password' | translate}}</span>
+          <span *ngIf="editForm.controls['userPwd'].errors">{{errorMsg}}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.confirmPassword' | translate}}</label>
+      <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+        <input matInput [type]="hide2 ? 'password' : 'text'" id="certainPwd" name="certainPwd" formControlName="certainPwd" autocomplete="off">
+        <button type="button" *ngIf="editForm.controls['certainPwd'].value != ''" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+          <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>
+          {{ 'Message.notify.confirmPassword' | translate}}{{ 'Message.warn.confirmPassword' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row">
+      <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+        <label class="form__label">{{ 'general.email' | translate}}</label>
+        <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+          <input matInput id="email" name="email" formControlName="email">
+          <mat-error>{{ 'Message.warn.email' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+        <label class="form__label">{{ 'general.phone' | translate}}</label>
+        <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+          <input matInput id="phone" name="phone" formControlName="phone">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form__group required" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.role' | translate}}</label>
+      <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+        <mat-select formControlName="roles" [disabled]="disabled">
+          <mat-option *ngFor="let role of roles" [value]="role">{{role.roleName}}</mat-option>
+        </mat-select>
+        <mat-error>{{ 'Message.notify.role' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.description' | translate}}</label>
+      <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+        <textarea matInput id="desc" name="desc" formControlName="desc"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form__btn-row" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row">
+      <div fxFlex="1 1 auto">
+        <button mat-raised-button class="btn btn--theme-basic" type="button"
+          id="userPageCloseBtn" name="userPageCloseBtn" (click)="goBack()">{{ 'general.cancel' | translate}}</button>
+      </div>
+      <div fxFlex="1 1 auto">
+        <button mat-raised-button class="btn btn--theme-primary" type="submit" id="userPageSubmitBtn" name="userPageSubmitBtn">{{ 'general.confirm' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</mat-card>

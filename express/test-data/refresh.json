@@ -1,0 +1,34 @@
+{
+  "errorCode": 0,
+  "errorMessage": "帳號 admin 登入成功。",
+  "data": {
+    "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjIwMCwidXNlcl9uYW1lIjoiYWRtaW4iLCJpc3MiOiJEb2NGb3JtIiwiZm9yIjoxLCJ0eXBlIjoxLCJleHAiOjE1NjMxODY2Mzh9.R3C5KAnfnEQMuCzKIJPgCoFCETGx2gTsmVcvMfqCQOQ",
+    "refreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjIwMCwidXNlcl9uYW1lIjoiYWRtaW4iLCJpc3MiOiJEb2NGb3JtIiwiZm9yIjoxLCJ0eXBlIjoxLCJleHAiOjE1NjMxODY2Mzh9.KNoN3CfbJu7d58hOF-cUMTf9F01d7i8tx08ktfnWPBY",
+    "expiresIn": 900,
+    "tokenType": "Bearer",
+    "scope": [
+      { "permissionName": "CG_UserSearch", "permissionClass": "User" },
+      { "permissionName": "CG_UserNew", "permissionClass": "User" },
+      { "permissionName": "CG_UserDel", "permissionClass": "User" },
+      { "permissionName": "CG_UserEdit", "permissionClass": "User" },
+      { "permissionName": "CG_RoleSearch", "permissionClass": "Role" },
+      { "permissionName": "CG_RoleNew", "permissionClass": "Role" },
+      { "permissionName": "CG_RoleEdit", "permissionClass": "Role" },
+      { "permissionName": "CG_RoleDel", "permissionClass": "Role" },
+      { "permissionName": "CG_DebugLogSearch", "permissionClass": "Log" },
+      { "permissionName": "CG_ManagerLogSearch", "permissionClass": "Log" },
+      { "permissionName": "CG_ServiceLogSearch", "permissionClass": "Log" },
+      { "permissionName": "CG_ApplicationSearch", "permissionClass": "Application" },
+      { "permissionName": "CG_ApplicationNew", "permissionClass": "Application" },
+      { "permissionName": "CG_ApplicationDel", "permissionClass": "Application" },
+      { "permissionName": "CG_ApplicationEdit", "permissionClass": "Application" },
+      { "permissionName": "CG_ApplicationGenApiKey", "permissionClass": "Application" },
+      { "permissionName": "CG_ApplicationDelToken", "permissionClass": "Application" },
+      { "permissionName": "CG_SettingEdit", "permissionClass": "System" }
+    ],
+    "userInfo": {
+      "userId": 200,
+      "userName": "admin"
+    }
+  }
+}

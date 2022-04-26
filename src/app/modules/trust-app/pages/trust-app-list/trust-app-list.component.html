@@ -1,0 +1,118 @@
+<div fxLayout="column" fxLayoutGap="5px" *ngIf="outlet.isActivated === false">
+  <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 55px">
+    <div fxLayout="column" fxLayoutGap="15px" fxLayout.gt-xs="row">
+      <div>
+        <button mat-raised-button class="btn btn--theme-primary" type="button" id="trustAppAddBtn" name="trustAppAddBtn"
+            *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationNew" routerLink="/management/system/trustApp/list/add">
+          <i class="material-icons">add</i>{{'general.add' | translate}}
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button class="btn btn--theme-primary" type="button" id="trustAppExBtn" name="trustAppExBtn"
+            (click)="openImportDialog()">
+          <i class="material-icons">file_upload</i>{{'general.import' | translate}}
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button class="btn btn--theme-basic" type="button" id="trustAppMutiDelBtn" name="trustAppMutiDelBtn"
+            *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationDel" (click)="openDelDialog(getSelectedCheckBoxes())">
+          <i class="material-icons">remove</i>{{'general.delete' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="1 1 auto">
+    <mat-card>
+      <mat-table [dataSource]="dataSource" *ngIf="dataSource && dataSource.data">
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          *ngIf="totalCount !== 0">
+            </mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="appName">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.name' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="rwd-title" fxHide.gt-sm>{{ 'general.name' | translate}} : </span>{{element.appName}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="appType">
+            <mat-header-cell *matHeaderCellDef>{{ 'general.type' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <span class="rwd-title" fxHide.gt-sm>{{ 'general.type' | translate}} : </span> {{'Application.type.' + element.appType | translate}}
+            </mat-cell>
+          </ng-container>
+
+        <!-- <ng-container matColumnDef="tokens">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.token' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="rwd-title" fxHide.gt-sm>{{ 'general.token' | translate}} : </span> {{element.tokenNum}}
+          </mat-cell>
+        </ng-container> -->
+
+        <ng-container matColumnDef="desc">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.description' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"> <span class="rwd-title" fxHide.gt-sm>{{ 'general.description' | translate}} : </span> {{element.desc}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.operation' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"> <span class="rwd-title" fxHide.gt-sm>{{ 'general.operation' | translate}} : </span>
+              <button mat-icon-button  [matMenuTriggerFor]="menu">
+                <i class="material-icons">more_horiz</i>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item id="trustAppInfoBtn" name="trustAppInfoBtn"
+                    *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationSearch" (click)="getAppInfo(element.appId)">
+                  {{ 'general.info' | translate}}
+                </button>
+                <button mat-menu-item id="trustAppDlBtn" name="trustAppDlBtn"
+                    *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationGenApiKey" (click)="openDlDialog(element.appId)">
+                  {{ 'Application.updateAPIKey' | translate}}
+                </button>
+                <button mat-menu-item id="trustAppEditBtn" name="trustAppEditBtn"
+                    *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationEdit" (click)="openEditDialog(element)">
+                  {{ 'general.edit' | translate}}
+                </button>
+                <button mat-menu-item id="trustAppExportBtn" name="trustAppExportBtn"
+                    *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationEdit" (click)="openExportDialog(element)">
+                  {{ 'general.export' | translate}}
+                </button>
+                <button mat-menu-item id="trustAppDelBtn" name="trustAppDelBtn"
+                    *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationDel" (click)="openDelDialog(element)">
+                  {{ 'general.delete' | translate}}
+                </button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+          <mat-cell *matCellDef="let element">
+            {{ 'general.noData' | translate}}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-md></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; when: showData"></mat-row>
+
+        <mat-row *matRowDef="let row; columns: ['noData']; when: !showData"
+            [@detailExpand]="(totalCount === 0) ? 'expanded' : 'collapsed'"></mat-row>
+      </mat-table>
+      <mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          (page)="changePage($event)" *ngIf="totalCount !== 0"></mat-paginator>
+    </mat-card>
+  </div>
+</div>
+
+<router-outlet #outlet="outlet"></router-outlet>

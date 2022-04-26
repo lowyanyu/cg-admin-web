@@ -1,0 +1,48 @@
+<mat-card class="card">
+  <form class="form form--size-lg" [formGroup]="editForm" (ngSubmit)="submit()" id="editForm" name="editForm" fxLayout="column">
+    <div class="form__group required" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.name' | translate}}</label>
+      <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+        <input matInput id="roleName" name="roleName" formControlName="roleName" required>
+        <mat-error>{{ 'Message.notify.name' | translate}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.description' | translate}}</label>
+      <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+        <textarea matInput id="desc" name="desc" formControlName="desc"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+      <label class="form__label">{{ 'general.permission' | translate}}</label>
+      <div fxLayout="row wrap" fxLayoutGap="20px">
+        <div class="perm-item" fxFlex="1 1 auto" *ngFor="let pc of permissionClasses;" [fxFlex]="flexOption.value">
+          <div class="perm-item__title">
+            <span>{{ 'Role.PermissionClass.' + pc | translate}}</span>
+            <mat-checkbox (change)="$event ? masterToggle(pc) : null"
+                          [checked]="hasSelected(pc) && isAllSelected(pc)"
+                          [indeterminate]="hasSelected(pc) && !isAllSelected(pc)">
+            </mat-checkbox>
+          </div>
+          <mat-selection-list dense [formControl]="editForm.controls[pc]" [compareWith]="compareWith" (selectionChange)="selectDefault(pc)">
+            <mat-list-option *ngFor="let p of permissionList | arrayfilter : pc;" [value]="p">
+              {{ 'Role.PermissionName.' + p.permissionName | translate}}
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__btn-row" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row">
+      <div fxFlex="1 1 auto">
+        <button mat-raised-button class="btn btn--theme-basic" type="button"
+          id="rolePageCloseBtn" name="rolePageCloseBtn" (click)="goBack()">{{ 'general.cancel' | translate}}</button>
+      </div>
+      <div fxFlex="1 1 auto">
+        <button mat-raised-button class="btn btn--theme-primary" type="submit" id="rolePageSubmitBtn" name="rolePageSubmitBtn">{{ 'general.confirm' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</mat-card>

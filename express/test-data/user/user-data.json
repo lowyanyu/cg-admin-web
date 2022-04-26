@@ -1,0 +1,19 @@
+{
+  "errorCode": 0,
+  "errorMessage": "查詢 系統管理者 : 200 成功。",
+  "data": {
+    "userId": 200,
+    "userAccount": "admin",
+    "userName": "Administrator",
+    "phone": "0945871263",
+    "desc": "Administrator 預設帳號 ",
+    "email": "admin@changingtec.com",
+    "status": 1,
+    "roles": [
+      {
+        "roleId": 200,
+        "roleName": "super"
+      }
+    ]
+  }
+}

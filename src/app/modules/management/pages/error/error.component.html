@@ -1,0 +1,39 @@
+<div fxLayout="column">
+  <div fxFlex="1 1 auto">
+    <h1>{{ 'general.systemError' | translate}}</h1>
+  </div>
+  <div fxFlex="1 1 auto" *ngIf="httpStatus !== 0">
+    <h1>Http {{httpStatus}}</h1>
+  </div>
+  <div fxFlex="1 1 30px" class="error-body">
+    <label class="error-body__label">{{ 'general.errorCode' | translate}}</label>
+    <span *ngIf="errorCode && errorCode !== 0; else noErrorCode">
+        {{errorCode}}
+    </span>
+    <ng-template #noErrorCode>
+        {{ 'general.noErrorCode' | translate}}
+    </ng-template>
+  </div>
+  <div fxFlex="1 1 30px" class="error-body">
+    <label class="error-body__label">{{ 'general.errorMsg' | translate}}</label>
+    <span *ngIf="errorMessage !== '' && errorMessage !== null; else noErrorMessage">
+      {{errorMessage}}
+    </span>
+    <ng-template #noErrorMessage>
+        {{ 'general.noErrorMsg' | translate}}
+    </ng-template>
+  </div>
+  <div fxFlex="1 1 auto" class="error-body" *ngIf="errorCode === -1 || errorCode >= 500">
+    <h1 class="error-body__title">{{ 'Error.serverError' | translate}}</h1>
+    <ol>
+      <li>{{ 'Error.network.reason' | translate}}<br/>
+        <label class="error-body__label">{{ 'general.suggest' | translate}}</label>
+        <span>{{ 'Error.network.suggest' | translate}}</span>
+      </li>
+      <li>{{ 'Error.server.reason' | translate}}<br/>
+        <label class="error-body__label">{{ 'general.suggest' | translate}}</label>
+        <span>{{ 'Error.server.suggest' | translate}}</span>
+      </li>
+    </ol>
+  </div>
+</div>

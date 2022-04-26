@@ -1,0 +1,69 @@
+<div fxLayout="column wrap" fxLayoutGap.gt-xs="30px">
+  <div fxFlex="1 1 20px" *ngIf="debuglogDataSource && debuglogDataSource.data.length > 0; else noData">
+    <div>{{'Log.debugLogPath' | translate}} : {{debugLogPath}}</div>
+  </div>
+  <ng-template #noData>
+    <div fxFlex="1 1 20px">{{ 'general.noData' | translate}}</div>
+  </ng-template>
+  <div fxFlex="1 1 auto" *ngIf="debuglogDataSource && debuglogDataSource.data.length > 0">
+    <mat-card>
+      <mat-table matSort [dataSource]="debuglogDataSource" (matSortChange)="sortLogList($event)">
+        <ng-container matColumnDef="fileName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'general.fileName' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'general.fileName' | translate}} : </span> {{element.fileName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastUpdateTime">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'general.lastUpdateTime' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="rwd-title" fxHide.gt-sm>{{ 'general.lastUpdateTime' | translate}} : </span>
+            {{element.lastUpdateTime | date:'yyyy/MM/dd HH:mm:ss'}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fileSize">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'general.size' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="rwd-title" fxHide.gt-sm>{{ 'general.size' | translate}} : </span>
+            <ng-container *ngIf="element.fileSize < 1024">
+              {{element.fileSize}} KB
+            </ng-container>
+            <ng-container #MBUnit *ngIf="(element.fileSize > 1024 && element.fileSize < 1048576)">
+              {{element.fileSize / 1024 | number:'1.1-2' }} MB
+            </ng-container>
+            <ng-container #GBUnit *ngIf="element.fileSize > 1048576">
+              {{element.fileSize / 1048576 | number:'1.1-2'}} GB
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.operation' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'general.operation' | translate}} : </span>
+            <button mat-stroked-button type="button" class="btn btn--theme-basic" (click)="downloadLog(element)">
+              <i class="material-icons">file_download</i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+          <mat-cell *matCellDef="let element">
+            {{ 'general.noData' | translate}}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-md></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; when: showData"></mat-row>
+
+        <mat-row *matRowDef="let row; columns: ['noData']; when: !showData"
+            [@detailExpand]="(totalCount === 0) ? 'expanded' : 'collapsed'"></mat-row>
+
+      </mat-table>
+      <mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          (page)="changePage($event)" *ngIf="totalCount !== 0"></mat-paginator>
+    </mat-card>
+  </div>
+</div>
+
+
+

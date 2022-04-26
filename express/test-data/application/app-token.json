@@ -1,0 +1,42 @@
+{
+  "errorCode":0,
+  "errorMessage":"查詢 應用系統 : 令牌 成功。",
+  "data":{
+    "result":[
+      {
+        "tokenId":19118,
+        "tokenType":1,
+        "tokenClass":1,
+        "status":1,
+        "ip":"192.168.0.110",
+        "createTime":"2020/12/23 10:09:19",
+        "expireTime":"2020/12/23 10:24:19",
+        "serial":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjIwMywiaXNzIjoiRG9jRm9ybSIsImZvciI6MiwidHlwZSI6MSwiZXhwIjoxNjA4NjkwMjU5LCJrZXkiOiIwNzlmNTBhZjI1MzMzNWFlNzU2NGRlMjEifQ.iBl--MaIVqxrA6YE-fRBfXnIZyALhYAVzhO9cELWpoc",
+        "appId":203
+      },
+      {
+        "tokenId":19118,
+        "tokenType":1,
+        "tokenClass":1,
+        "status":1,
+        "ip":"192.168.0.110",
+        "createTime":"2020/12/23 10:09:19",
+        "expireTime":"2020/12/23 10:24:19",
+        "serial":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjIwMywiaXNzIjoiRG9jRm9ybSIsImZvciI6MiwidHlwZSI6MSwiZXhwIjoxNjA4NjkwMjU5LCJrZXkiOiIwNzlmNTBhZjI1MzMzNWFlNzU2NGRlMjEifQ.iBl--MaIVqxrA6YE-fRBfXnIZyALhYAVzhO9cELWpoc",
+        "appId":204
+      },
+      {
+        "tokenId":19118,
+        "tokenType":1,
+        "tokenClass":1,
+        "status":1,
+        "ip":"192.168.0.110",
+        "createTime":"2020/12/23 10:09:19",
+        "expireTime":"2020/12/23 10:24:19",
+        "serial":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjIwMywiaXNzIjoiRG9jRm9ybSIsImZvciI6MiwidHlwZSI6MSwiZXhwIjoxNjA4NjkwMjU5LCJrZXkiOiIwNzlmNTBhZjI1MzMzNWFlNzU2NGRlMjEifQ.iBl--MaIVqxrA6YE-fRBfXnIZyALhYAVzhO9cELWpoc",
+        "appId":205
+      }
+    ],
+    "amount":3
+  }
+}

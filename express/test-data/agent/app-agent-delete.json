@@ -1,0 +1,22 @@
+{
+	"errorCode": 66001,
+	"errorMessage": "刪除 受信任IP 失敗。",
+	"data": {
+		"amount": 2,
+		"result": [
+			{
+				"targetId": 203,
+				"targetName": "1.1.1.1",
+				"errorCode": 66001,
+				"errorMessage": "delete agent failed."
+			},
+			{
+				"targetId": 204,
+				"targetName": "2.2.2.2",
+				"errorCode": 0,
+				"errorMessage": "delete agent success."
+			}
+		]
+	}
+}
+

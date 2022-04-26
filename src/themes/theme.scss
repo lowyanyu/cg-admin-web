@@ -1,0 +1,54 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, monospace, Microsoft JhengHei'
+);
+@include angular-material-typography($custom-typography);
+
+$cgadmin-primary: #3f51b5;
+$cgadmin-basic: #FFFFFF;
+$cgadmin-warn: #ffd710;
+$cgadmin-danger: #f44336;
+$cgadmin-success: #78d82f;
+
+.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
+  &.btn--theme-primary {
+    background-color: $cgadmin-primary;
+    color: #FFFFFF;
+  }
+  &.btn--theme-basic {
+    background-color: $cgadmin-basic;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.btn--theme-warn {
+    background-color: $cgadmin-warn;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.btn--theme-danger {
+    background-color: $cgadmin-danger;
+    color: #FFFFFF;
+  }
+  &.btn--theme-success {
+    background-color: $cgadmin-success;
+    color: #FFFFFF;
+  }
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button {
+  &.btn--theme-primary {
+    color: $cgadmin-primary;
+  }
+  &.btn--theme-basic {
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.btn--theme-warn {
+    color: $cgadmin-warn;
+  }
+  &.btn--theme-danger {
+    color: $cgadmin-danger;
+  }
+  &.btn--theme-success {
+    color: $cgadmin-success;
+  }
+}

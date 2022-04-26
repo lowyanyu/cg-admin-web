@@ -1,0 +1,396 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~src/themes/theme.scss';
+@import '~material-design-icons/iconfont/material-icons.css';
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  font-family: "Microsoft JhengHei","PMingLiu","Arial";
+  background-color: $cgadmin-primary;
+  margin: 0;
+}
+
+.alert {
+  &--theme-danger {
+    color: $cgadmin-danger;
+  }
+}
+
+.container {
+  padding: 20px 20px;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+/*==================================================
+ ******                Card                   ******
+ ==================================================*/
+
+/*==================================================
+ ******              Checkbox                 ******
+ ==================================================*/
+/* Enable this to change theme color easily
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $cgadmin-primary !important;
+}
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+  background: $cgadmin-primary !important;
+}
+
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate {
+  background: $cgadmin-primary !important;
+}
+*/
+
+/*==================================================
+ ******             Datepicker                ******
+ ==================================================*/
+/* Enable this to change theme color easily
+.mat-datepicker-toggle-active {
+  color: $cgadmin-primary !important;
+}
+
+.mat-calendar-body-selected {
+  background-color: $cgadmin-primary !important;
+}
+*/
+
+/*==================================================
+ ******               Dialog                  ******
+ ==================================================*/
+.dialog {
+  &--theme-info &__label {
+    font-weight: bold;
+  }
+
+  &--theme-form &__form {
+    padding: 10px 30px;
+    width: 100%;
+
+    &__label {
+      line-height: 50px;
+    }
+
+    @media screen and (max-width: 600px) {
+      &__label {
+        text-align: left;
+      }
+    }
+  }
+
+  &__content {
+    width: -webkit-fill-available;
+  }
+
+  &__title {
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/*==================================================
+ ******                Form                   ******
+ ==================================================*/
+ .form {
+  padding: 20px 80px;
+  text-align: center;
+  margin: auto;
+
+  &--display-inline {
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+  }
+
+  &--display-inline &__field {
+    max-height: 65px;
+  }
+
+  &--display-inline &__btn {
+    margin-top: 0.6em !important;
+    margin-bottom: 32px !important;
+  }
+
+  .external-search {
+    &__text {
+      vertical-align: middle;
+    }
+  }
+
+  &__label {
+    text-align: left;
+  }
+
+  &__field {
+    width: 100%;
+
+    &--display-horizontal {
+      text-align: left;
+      ul {
+        list-style: none;
+        padding-left: 10px;
+      }
+    }
+
+    &--display-vertical {
+      ul {
+        list-style: none;
+        padding-left: 10px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      li {
+        display: flex;
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+  &__radio-field {
+    padding-top: 15px;
+  }
+
+  &__btn-row {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.required > .form__label:after {
+  color: $cgadmin-danger;
+  content: " *";
+}
+
+.mat-form-field-outline {
+  background-color: #FFFFFF;
+}
+
+.mat-form-field-infix {
+  padding: 10px 0px 10px 0px !important;
+}
+
+.mat-form-field-flex {
+  align-items: center !important;
+  .mat-form-field-suffix {
+    vertical-align: baseline !important;
+  }
+}
+
+/* Enable this to change theme color easily
+// mat input color
+.mat-input-element {
+  caret-color: $cgadmin-primary !important;
+}
+
+.mat-warn .mat-input-element, .mat-form-field-invalid .mat-input-element {
+  caret-color: $cgadmin-danger !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: $cgadmin-primary !important;
+}
+
+.mat-warn .mat-form-field-label, .mat-form-field-invalid .mat-form-field-label {
+  color: $cgadmin-danger !important;
+}
+
+.mat-error {
+  color: $cgadmin-danger !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: $cgadmin-primary !important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+  color: $cgadmin-danger !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: $cgadmin-primary !important;
+}
+
+// select option color
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: $cgadmin-primary !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $cgadmin-primary !important;
+}
+*/
+
+@media screen and (min-width: 1080px) {
+  .form--size-lg {
+    max-width: 900px;
+  }
+}
+
+/*==================================================
+ ******            Radio Button               ******
+ ==================================================*/
+/* Enable this to change theme color easily
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $cgadmin-primary !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: $cgadmin-primary !important;
+}
+*/
+
+/*==================================================
+ ******               Sidenav                 ******
+ ==================================================*/
+ .cg-sidenav-container {
+  &--size-mini {
+    .mat-drawer-inner-container {
+      overflow-x: hidden !important;
+    }
+
+    .mat-list-item-content {
+      flex-direction: column !important;
+      padding-bottom: 5px !important;
+      padding-top: 5px !important;
+    }
+  }
+}
+
+/*==================================================
+ ******                Tab                    ******
+ ==================================================*/
+.mat-tab-body-wrapper {
+  padding-top: 15px;
+}
+
+/* Enable this to change theme color easily
+.mat-ink-bar {
+  background-color: $cgadmin-primary !important;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: $cgadmin-primary !important;
+}
+*/
+
+/*==================================================
+ ******            Table Column               ******
+ ==================================================*/
+@media screen and (max-width: 959px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  .mat-table .mat-header-row {
+    min-height: 0px;
+  }
+
+  // Enable this to hide header
+  .mat-table .mat-header-cell {
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .mat-table .mat-row {
+    border-bottom: 5px solid rgba(54, 54, 54, 0.32);
+    display: block;
+    min-height: 0px !important;
+  }
+
+  .mat-table .mat-cell {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: block;
+    font-size: 1em;
+    text-align: left;
+    height: auto;
+    padding: 0.5em 0em 0.5em 1em;
+    display: flex;
+    .rwd-title {
+      margin-right: 10px;
+      font-weight: bolder;
+    }
+  }
+
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    font-size: .85em;
+  }
+
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+
+  mat-row::after {
+    display: none;
+    min-height: inherit;
+    content: '';
+  }
+
+  mat-cell:last-of-type {
+    padding-left: 24px;
+  }
+
+  .mat-raised-button {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+
+// ie vertical align center
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles go here */
+  .mat-header-row, .mat-row {
+    -ms-flex-align: stretch;
+  }
+}
+
+.mat-column-noData {
+  display: block !important;
+  line-height: 200px;
+  text-align: center !important;
+  padding: 0 !important;
+}
+
+.mat-column-select {
+  max-width: 80px;
+}

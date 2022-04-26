@@ -1,0 +1,21 @@
+{
+  "errorCode": 66002,
+  "errorMessage": "刪除失敗",
+  "data": {
+    "amount": 2,
+    "result": [
+      {
+        "targetId": 201,
+        "targetName": "test1",
+        "errorCode": 1,
+        "errorMessage": "Delete failed 1."
+      },
+      {
+        "targetId": 202,
+        "targetName": "test2",
+        "errorCode": 0,
+        "errorMessage": "Delete success 2."
+      }
+    ]
+  }
+}

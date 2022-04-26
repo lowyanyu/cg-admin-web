@@ -1,0 +1,31 @@
+{
+  "errorCode": 0,
+  "errorMessage": "Edit application info success.",
+  "data": {
+      "appId": 205,
+      "appName": "EditAppTes",
+      "apiKey": "121",
+      "desc": "修改應用程式管理測試例",
+      "agents": [],
+      "permissions": [
+          {
+              "permissionId": 301,
+              "permissionName": "Doc_GroupSearch",
+              "permissionClass": "Group",
+              "permissionType": 3
+          },
+          {
+              "permissionId": 302,
+              "permissionName": "Doc_GroupNew",
+              "permissionClass": "Group",
+              "permissionType": 3
+          },
+          {
+              "permissionId": 402,
+              "permissionName": "Doc_DocumentNew",
+              "permissionClass": "Document",
+              "permissionType": 3
+          }
+      ]
+  }
+}

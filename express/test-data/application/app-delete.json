@@ -1,0 +1,22 @@
+{
+	"errorCode": 66001,
+	"errorMessage": "刪除 應用系統 失敗。",
+	"data": {
+		"amount": 2,
+		"result": [
+			{
+				"targetId": 203,
+				"targetName": "test",
+				"errorCode": 66001,
+				"errorMessage": "delete app failed."
+			},
+			{
+				"targetId": 204,
+				"targetName": "test123",
+				"errorCode": 0,
+				"errorMessage": "delete app success."
+			}
+		]
+	}
+}
+

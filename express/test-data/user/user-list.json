@@ -1,0 +1,129 @@
+{
+  "errorCode": 0,
+  "errorMessage": "查詢 系統管理者清單 成功。",
+  "data": {
+    "result": [
+      {
+        "userId": 200,
+        "userAccount": "admin",
+        "userName": "Administrator",
+        "phone": "0945871263",
+        "desc": "Administrator 預設帳號 ",
+        "email": "admin@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 200,
+            "roleName": "super"
+          }
+        ]
+      },
+      {
+        "userId": 201,
+        "userAccount": "op",
+        "userName": "OP",
+        "phone": "0925785555",
+        "desc": "OP 預設帳號",
+        "email": "op@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 201,
+            "roleName": "op"
+          }
+        ]
+      },
+      {
+        "userId": 202,
+        "userAccount": "api",
+        "userName": "API",
+        "phone": "0925742135",
+        "desc": "API 預設帳號 ",
+        "email": "api@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 202,
+            "roleName": "api"
+          }
+        ]
+      },
+      {
+        "userId": 206,
+        "userAccount": "doreen",
+        "userName": "doreen lin",
+        "phone": "0920005555",
+        "desc": "test",
+        "email": "doreen@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 200,
+            "roleName": "super"
+          }
+        ]
+      },
+      {
+        "userId": 207,
+        "userAccount": "jessica",
+        "userName": "Jessica",
+        "phone": "0925760885",
+        "desc": "測試修改密碼",
+        "email": "jessica@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 200,
+            "roleName": "super"
+          }
+        ]
+      },
+      {
+        "userId": 208,
+        "userAccount": "test",
+        "userName": "test",
+        "phone": "0911185555",
+        "desc": "新增管理者測試案例",
+        "email": "test@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 200,
+            "roleName": "super"
+          }
+        ]
+      },
+      {
+        "userId": 214,
+        "userAccount": "yyyy",
+        "userName": "zivtest001",
+        "phone": "0911033055",
+        "desc": "新增管理者測試案例",
+        "email": "yyyy@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 200,
+            "roleName": "super"
+          }
+        ]
+      },
+      {
+        "userId": 218,
+        "userAccount": "test000",
+        "userName": "test000",
+        "phone": "0925782555",
+        "desc": "1",
+        "email": "test000@changingtec.com",
+        "status": 1,
+        "roles": [
+          {
+            "roleId": 201,
+            "roleName": "op"
+          }
+        ]
+      }
+    ],
+    "amount": 8
+  }
+}

@@ -1,0 +1,6 @@
+export enum UserStatus {
+  FIRST_TIME_LOGIN = 66601,
+  PWD_VAILD_TIME = 66602,
+  OVER_ERROR_TIMES = 66603,
+  LOCKED = 66604
+}

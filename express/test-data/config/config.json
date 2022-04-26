@@ -1,0 +1,7 @@
+{
+  "errorCode": 0,
+  "errorMessage": "success",
+  "data": {
+    "app_token_expire_time": "-1"
+  }
+}

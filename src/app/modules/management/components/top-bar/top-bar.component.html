@@ -1,0 +1,27 @@
+<mat-toolbar role="heading" class="cg-toolbar" fxLayout="row" fxLayoutAlign="flex-end center">
+  <div fxFlex="1 1 100%" fxFlexLayout="column">
+    <h2 class="cg-toolbar__title">{{title}}</h2>
+    <ol class="breadcrumb cg-toolbar__breadcrumb">
+      <li *ngFor="let breadcrumb of breadcrumbs; let last = last;">
+        <div class="breadcrumb__label">
+          {{breadcrumb.label}}
+          <span *ngIf="!last"><i class="material-icons breadcrumb__right-icon">chevron_right</i></span>
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div fxFlex.gt-xs="1 1 180px">
+    <span class="cg-toolbar__info">{{ "HI, " + userName | uppercase}}</span>
+    <button type="button" mat-mini-fab class="btn btn--theme-basic" [matMenuTriggerFor]="settingMenu" #userToggleMenuBtn>
+      <i class="material-icons">face</i>
+    </button>
+    <mat-menu #settingMenu="matMenu">
+      <button mat-menu-item (click)="editCurrentUser()">
+        {{ 'general.accountInfo' | translate}}
+      </button>
+      <button mat-menu-item (click)="logout()">
+        {{ 'general.logout' | translate}}
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

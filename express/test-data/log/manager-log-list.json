@@ -1,0 +1,73 @@
+{
+	"errorCode": 0,
+	"errorMessage": "Get ManagerLog success.",
+	"data": {
+		"result": [
+			{
+				"logId": 590,
+				"logDate": 1594612618767,
+				"account": {
+					"userAccount": "admin",
+					"status": 0
+				},
+				"logClass": 2,
+				"clientIp": "192.168.0.189",
+				"operation": 4,
+				"respCode": 0,
+				"respMsg": "Edit roles success. op : delete"
+			},
+			{
+				"logId": 588,
+				"logDate": 1594612618767,
+				"account": {
+					"userAccount": "admin",
+					"status": 0
+				},
+				"logClass": 2,
+				"clientIp": "192.168.0.189",
+				"operation": 3,
+				"respCode": 0,
+				"respMsg": "Edit role success."
+			},
+			{
+				"logId": 584,
+				"logDate": 1594612618767,
+				"account": {
+					"userAccount": "admin",
+					"status": 0
+				},
+				"logClass": 2,
+				"clientIp": "192.168.0.189",
+				"operation": 1,
+				"respCode": 0,
+				"respMsg": "Create role success."
+			},
+			{
+				"logId": 417,
+				"logDate": 1594612618767,
+				"account": {
+					"status": -1
+				},
+				"logClass": 7,
+				"clientIp": "192.168.0.189",
+				"operation": 1,
+				"respCode": 0,
+				"respMsg": "Create application success."
+			},
+			{
+				"logId": 281,
+				"logDate": 1594612618767,
+				"account": {
+					"userAccount": "admin",
+					"status": 0
+				},
+				"logClass": 2,
+				"clientIp": "192.168.0.189",
+				"operation": 1,
+				"respCode": 0,
+				"respMsg": "Create role success."
+			}
+		],
+		"amount": 5
+	}
+}

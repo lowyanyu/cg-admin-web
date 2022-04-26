@@ -1,0 +1,70 @@
+<div fxLayout="column" fxLayoutGap="5px">
+  <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 55px">
+    <button mat-raised-button class="btn btn--theme-primary" type="button" id="settingSaveBtn" name="settingSaveBtn" (click)="save()"><i class="material-icons">edit</i>{{ 'general.edit' | translate}}</button>
+  </div>
+
+  <div fxFlex="1 1 auto">
+    <mat-card>
+      <mat-tab-group mat-stretch-tabs>
+        <mat-tab *ngFor="let superClass of allSettingClass " label="{{'Setting.superClass.' + superClass.superClass | translate}}">
+          <div fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="10px" class="setting" *ngFor="let subClass of superClass.subClasses">
+            <div fxFlex="1 1 auto" *ngIf="subClass.subClass !== 0 ">
+              <h4>
+                <!-- <mat-icon svgIcon="custom-svg:sub-title" aria-label="SubTitle"></mat-icon> -->
+                {{'Setting.subClass.' + superClass.superClass + '.' + subClass.subClass | translate}}
+              </h4>
+            </div>
+            <div class="setting__row" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="none none" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center none" fxLayoutGap.gt-sm="10px"
+              *ngFor="let setting of subClass.settings">
+              <div fxFlex="1 1 auto" fxFlex.gt-sm="25" [ngClass.lt-sm]="'setting__label--align-right'" [ngClass.gt-sm]="'setting__label--align-center'">{{'Setting.name.' + setting.setName | translate}}</div>
+              <div fxFlex="1 1 auto" fxFlex.gt-sm="60" class="setting__field" *ngIf="setting.hasExtra === SETTINGDEF.HASEXTRA_NO">
+                <app-form-control [control]="updateForm.controls[setting.setName]" [option]= "setting" [value]="setting.setValue"
+                [i18n]="{'label': 'Setting.name.' + setting.setName, 'placeholder': 'Setting.placeholder.' + setting.setName,
+                'desc': 'Setting.desc.' + setting.setName, 'unit': 'Setting.unit.' + setting.setName}">
+                </app-form-control>
+              </div>
+              <div [formGroup]="updateForm.controls[setting.setName]" fxFlex="1 1 auto" fxFlex.gt-sm="60" *ngIf="setting.hasExtra === SETTINGDEF.HASEXTRA_YES">
+                <mat-radio-group [formControlName]="setting.setName + '_' + setting.setType" class="setting__radio-group">
+                  <mat-radio-button *ngFor="let selection of setting.setOption['selection']" class="setting__radio-group__btn" [value]="selection.value">
+                    {{selection.label}}
+
+                    <ng-container *ngIf="selection.ext">
+                      <!-- Input Text -->
+                      <mat-form-field appearance="outline" class="setting__radio-group__input" *ngIf="selection.ext.setType === FORM_CONTROL_TYPE.INPUT_TEXT">
+                        <input matInput [formControlName]="selection.ext.setName" [readonly]="isReadOnly(setting.setName, setting.setName + '_' + setting.setType)">
+                        <span matSuffix class="span-unit">{{ 'Setting.unit.' + setting.setName | translate}}</span>
+                        <mat-error *ngIf="hasError(setting.setName, selection.ext.setName, 'required')">{{'general.input' | translate}}{{'Setting.name.' + setting.setName | translate}}</mat-error>
+                        <mat-error *ngIf="hasError(setting.setName, selection.ext.setName, 'maxlength')">
+                          {{'Setting.name.' + setting.setName | translate}}{{'general.maxLength' | translate}} : {{selection.ext.setOption['max']}}</mat-error>
+                        <mat-error *ngIf="hasError(setting.setName, selection.ext.setName, 'max')">
+                          {{'Setting.name.' + setting.setName | translate}} , {{'general.max' | translate}} : {{selection.ext.setOption['max']}}</mat-error>
+                        <mat-error *ngIf="hasError(setting.setName, selection.ext.setName, 'minlength')">
+                          {{'Setting.name.' + setting.setName | translate}}{{'general.minLength' | translate}} : {{selection.ext.setOption['min']}}</mat-error>
+                        <mat-error *ngIf="hasError(setting.setName, selection.ext.setName, 'min')">
+                          {{'Setting.name.' + setting.setName | translate}} , {{'general.min' | translate}} : {{selection.ext.setOption['min']}}</mat-error>
+                        <mat-error *ngIf="hasError(setting.setName, selection.ext.setName, 'pattern')">
+                          {{'Setting.name.' + setting.setName | translate}}{{'general.onlyNumber' | translate}}</mat-error>
+                      </mat-form-field>
+                      <!-- Select -->
+                      <mat-form-field floatLabel="always" class="setting__radio-group__select" appearance="outline" *ngIf="selection.ext.setType === FORM_CONTROL_TYPE.SELECT">
+                        <mat-select [formControlName]="selection.ext.setName" multiple>
+                          <mat-option *ngFor="let option of selection.ext.selection" [value]="option.value">
+                            {{option.label}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-hint>{{ 'Setting.desc.' + selection.ext.setName | translate}}</mat-hint>
+                      </mat-form-field>
+
+                    </ng-container>
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>
+
+

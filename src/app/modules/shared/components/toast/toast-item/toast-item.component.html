@@ -1,0 +1,15 @@
+<div #container class="cg-toast__message" *ngIf="message"
+    [ngClass]="{'cg-toast__message--theme-primary': message.level == 'primary','cg-toast__message--theme-info': message.level == 'info','cg-toast__message--theme-warn': message.level == 'warn','cg-toast__message--theme-error': message.level == 'error','cg-toast__message--theme-success': message.level == 'success'}">
+  <button class="cg-toast__close-btn" type="button" (click)="onCloseIconClick($event)">
+    <i class="material-icons">close</i>
+  </button>
+  <div class="cg-toast__message-content">
+    <!-- <span class="cg-toast-icon"
+        [ngClass]="{'pi-info-circle': message.level == 'info', 'pi-exclamation-triangle': message.level == 'warn',
+        'pi-times': message.level == 'error', 'pi-check' :message.level == 'success'}"></span> -->
+    <div class="cg-toast__message-text-content">
+      <!-- <div class="cg-toast-title">{{message.title}}</div> -->
+      <div class="cg-toast__content">{{message.content}}</div>
+    </div>
+  </div>
+</div>

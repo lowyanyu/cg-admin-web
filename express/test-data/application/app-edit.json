@@ -1,0 +1,19 @@
+{
+	"errorCode": 0,
+	"errorMessage": "修改 應用系統 : 1111111 成功。",
+	"data": {
+		"appId": 201,
+		"appName": "1111111",
+		"apiKey": "Not init apiKey",
+		"desc": "123",
+		"appType": 2,
+		"agents": [
+			{
+				"agentId": 200,
+				"agentIp": "192.168.0.100",
+				"desc": ""
+			}
+		],
+		"permissions": []
+	}
+}

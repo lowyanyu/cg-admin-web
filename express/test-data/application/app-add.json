@@ -1,0 +1,13 @@
+{
+	"errorCode": 0,
+	"errorMessage": "新增 應用系統 名稱:tttt 成功。",
+	"data": {
+		"appId": 201,
+		"appName": "tttt",
+		"apiKey": "Not init apiKey",
+		"desc": "123",
+		"appType": 2,
+		"agents": [],
+		"permissions": []
+	}
+}

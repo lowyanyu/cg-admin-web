@@ -1,0 +1,79 @@
+<cg-toast position="bottom-right"></cg-toast>
+
+<mat-sidenav-container class="cg-sidenav-container"
+    [ngClass]="{'cg-sidenav-container--size-max': cgSidenavOpenState === CGSIDENAV_OPEN_STATE.MAX, 'cg-sidenav-container--size-mini': cgSidenavOpenState === CGSIDENAV_OPEN_STATE.MINI}">
+  <mat-sidenav class="cg-sidenav-container__sidenav" mode="side" opened="true">
+    <div class="cg-sidenav-container__sidenav__brand">
+      <img class="cg-sidenav-container__sidenav__logo" src="assets/images/logo.png"/>
+    </div>
+
+    <mat-nav-list class="cg-sidenav-container__sidenav__list">
+      <mat-divider></mat-divider>
+      <a routerLink="/management/dashboard" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item">
+        <i class="material-icons">home</i><span class="cg-sidenav-container__sidenav__text">{{ 'general.home' | translate}}</span>
+      </a>
+      <mat-divider></mat-divider>
+      <div *hasPermissionOne="MANAGEMENT_PERMISSION.CG_System">
+        <div mat-subheader>{{ 'System.title' | translate}}</div>
+        <a routerLink="/management/system/user" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+            *hasPermission="MANAGEMENT_PERMISSION.CG_UserSearch">
+          <i class="material-icons">person</i><span class="cg-sidenav-container__sidenav__text">{{ 'Account.title' | translate}}</span>
+        </a>
+        <a routerLink="/management/system/role" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+            *hasPermission="MANAGEMENT_PERMISSION.CG_RoleSearch">
+          <i class="material-icons">people</i><span class="cg-sidenav-container__sidenav__text">{{ 'Role.title' | translate}}</span>
+        </a>
+        <a routerLink="/management/system/trustApp" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+            *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationSearch">
+          <i class="material-icons">devices</i><span class="cg-sidenav-container__sidenav__text">{{ 'Application.title' | translate}}</span>
+        </a>
+        <a routerLink="/management/system/setting" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+            *hasPermission="MANAGEMENT_PERMISSION.CG_SettingEdit">
+          <i class="material-icons">settings</i><span class="cg-sidenav-container__sidenav__text">{{ 'Setting.title' | translate}}</span>
+        </a>
+        <mat-divider></mat-divider>
+      </div>
+      <div *hasPermissionOne="MANAGEMENT_PERMISSION.CG_Log">
+        <div mat-subheader>{{ 'Log.title' | translate}}</div>
+        <a routerLink="/management/log/managerLog" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+          *hasPermission="MANAGEMENT_PERMISSION.CG_ManagerLogSearch">
+          <i class="material-icons">web</i><span class="cg-sidenav-container__sidenav__text">{{ 'Log.management' | translate}}</span>
+        </a>
+        <a routerLink="/management/log/serviceLog" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+          *hasPermission="MANAGEMENT_PERMISSION.CG_ServiceLogSearch">
+          <i class="material-icons">dns</i><span class="cg-sidenav-container__sidenav__text">{{ 'Log.service' | translate}}</span>
+        </a>
+        <a routerLink="/management/log/debugLog" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item"
+          *hasPermission="MANAGEMENT_PERMISSION.CG_DebugLogSearch">
+          <i class="material-icons">bug_report</i><span class="cg-sidenav-container__sidenav__text">{{ 'Log.debug' | translate}}</span>
+        </a>
+        <mat-divider></mat-divider>
+      </div>
+      <a routerLink="/management/info" routerLinkActive="cg-sidenav-container__sidenav__item--is-active" mat-list-item class="cg-sidenav-container__sidenav__item">
+        <i class="material-icons">info</i><span class="cg-sidenav-container__sidenav__text">{{ 'System.info' | translate}}</span>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+
+    <div class="cg-sidenav-container__sidenav__btn">
+      <!-- <button mat-mini-fab class="btn btn--theme-primary" (click)="toggleSidenav()">
+        <i class="material-icons" *ngIf="cgSidenavOpenState === CGSIDENAV_OPEN_STATE.MAX">chevron_left</i>
+        <i class="material-icons" *ngIf="cgSidenavOpenState === CGSIDENAV_OPEN_STATE.MINI">chevron_right</i>
+      </button> -->
+    </div>
+
+    <div class="cg-sidenav-container__sidenav__server-info">
+      <div>
+        <div>{{ 'System.interfaceVersion' | translate}}</div>
+        <div>{{uiVersion}}</div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="cg-sidenav-container__content">
+    <app-top-bar></app-top-bar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

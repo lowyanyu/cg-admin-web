@@ -1,0 +1,18 @@
+{
+  "errorCode": 0,
+  "errorMessage": "Create user success.",
+  "data": {
+    "userId": 1,
+    "userAccount": "doreen",
+    "userName": "doreen lin",
+    "phone": "0945454545",
+    "desc": "doreen test",
+    "status": 1,
+    "roles": [
+      {
+        "roleId": 200,
+        "roleName": "super"
+      }
+    ]
+  }
+}

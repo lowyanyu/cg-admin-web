@@ -1,0 +1,49 @@
+<div fxLayout="column" fxLayoutGap="10px" [ngSwitch]="tokenDataType">
+  <div fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center" *ngSwitchCase="TOKENTYPE.UNLIMTED">
+    <div fxFlex="1 1 auto"><img src="assets/images/alert_info.png"></div>
+    <div fxFlex="1 1 auto">{{'Application.token_no_expire_time' | translate}}<br>{{'Application.no_active_token' | translate}}</div>
+  </div>
+  <div fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center" *ngSwitchCase="TOKENTYPE.NODATA">
+    <div fxFlex="1 1 auto">
+      {{'general.noData' | translate}}
+    </div>
+  </div>
+  <div fxFlex="1 1 auto" fxLayout="column"  fxLayoutGap="20px"  *ngSwitchCase="TOKENTYPE.NORMAL">
+    <div fxFlex="1 1 auto">
+      <button mat-raised-button type="button" class="btn btn--theme-basic" id="trustAppTokenDelBtn" name="trustAppTokenDelBtn"
+          *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationDelToken" (click)="openDelDialog(getAllToken())">
+          <i class="material-icons">remove</i>{{'general.deleteAll' | translate}}
+      </button>
+    </div>
+    <div fxFlex="1 1 auto">
+      <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" >
+        <ng-container matColumnDef="ip">
+          <mat-header-cell *matHeaderCellDef> {{'general.ip' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"> <span class="rwd-title" fxHide.gt-sm>{{'general.ip' | translate}} : </span> {{element.ip}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="expireTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="date"> {{'general.expireTime' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> <span class="rwd-title" fxHide.gt-sm>{{'general.expireTime' | translate}} : </span> {{element.expireTime}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="token">
+          <mat-header-cell *matHeaderCellDef>ActiveToken</mat-header-cell>
+          <mat-cell *matCellDef="let element"> <span class="rwd-title" fxHide.gt-sm>ActiveToken : </span> <div class="mat-column-token-text">{{element.serial}} </div> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="rwd-title" fxHide.gt-sm>{{ 'general.operation' | translate}} : </span>
+            <button mat-stroked-button type="button"
+                *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationDelToken" (click)="openDelDialog(element)">
+              <i class="material-icons">delete</i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-md></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
+

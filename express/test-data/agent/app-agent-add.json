@@ -1,0 +1,9 @@
+{
+	"errorCode": 0,
+	"errorMessage": "新增 信任IP 位址:192.168.0.100 成功。",
+	"data": {
+		"agentId": 200,
+		"agentIp": "192.168.0.100",
+		"desc": ""
+	}
+}

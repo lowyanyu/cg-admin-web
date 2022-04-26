@@ -1,0 +1,34 @@
+.setting {
+  &__label {
+    &--align-right {
+      text-align: left;
+      margin-top: 1rem;
+    }
+
+    &--align-center {
+      text-align: center;
+      margin-top: 1rem;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    line-height: 3;
+    align-self: center !important;
+  }
+
+  &__radio-group {
+    display: inline-flex;
+    align-items: center;
+    margin-top: -18px;
+
+    &__btn {
+      margin-right: 10px;
+    }
+
+    &__input, &__select {
+      margin-left: 5px;
+      margin-top: 13px !important;
+    }
+  }
+}

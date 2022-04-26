@@ -1,0 +1,96 @@
+<mat-form-field class="form-field" appearance="outline" *ngIf="option.setType === 0">
+  <input matInput [formControl]="control">
+  <span matSuffix class="span-unit" *ngIf="this.i18n.unit">{{this.i18n.unit | translate}}</span>
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+  <mat-error *ngIf="control.hasError('required')">{{'general.input' | translate}}{{this.i18n.label | translate}}</mat-error>
+  <mat-error *ngIf="control.hasError('maxlength')">
+    {{this.i18n.label | translate}}{{'general.maxLength' | translate}} : {{option.setOption['max']}}</mat-error>
+  <mat-error *ngIf="control.hasError('max')">
+    {{this.i18n.label | translate}} , {{'general.max' | translate}} : {{option.setOption['max']}}</mat-error>
+  <mat-error *ngIf="control.hasError('minlength')">
+    {{this.i18n.label | translate}}{{'general.minLength' | translate}} : {{option.setOption['min']}}</mat-error>
+  <mat-error *ngIf="control.hasError('min')">
+    {{this.i18n.label | translate}} , {{'general.min' | translate}} : {{option.setOption['min']}}</mat-error>
+  <mat-error *ngIf="control.hasError('pattern')">
+      {{this.i18n.label | translate}}{{'general.onlyNumber' | translate}}</mat-error>
+</mat-form-field>
+
+<mat-form-field class="form-field" appearance="outline" *ngIf="option.setType === FORM_CONTROL_TYPE.INPUT_TEXT">
+  <input matInput [formControl]="control" [placeholder]="placeholder">
+  <span matSuffix class="span-unit" *ngIf="this.i18n.unit">{{this.i18n.unit | translate}}</span>
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+  <mat-error *ngIf="control.hasError('required')">{{'general.input' | translate}}{{this.i18n.label | translate}}</mat-error>
+  <mat-error *ngIf="control.hasError('maxlength')">
+    {{this.i18n.label | translate}}{{'general.maxLength' | translate}} : {{option.setOption['max']}}</mat-error>
+  <mat-error *ngIf="control.hasError('max')">
+    {{this.i18n.label | translate}} , {{'general.max' | translate}} : {{option.setOption['max']}}</mat-error>
+  <mat-error *ngIf="control.hasError('minlength')">
+    {{this.i18n.label | translate}}{{'general.minLength' | translate}} : {{option.setOption['min']}}</mat-error>
+  <mat-error *ngIf="control.hasError('min')">
+    {{this.i18n.label | translate}} , {{'general.min' | translate}} : {{option.setOption['min']}}</mat-error>
+  <mat-error *ngIf="control.hasError('pattern')">
+    {{this.i18n.label | translate}}{{'general.onlyNumber' | translate}}</mat-error>
+</mat-form-field>
+
+<mat-form-field class="form-field" appearance="outline" *ngIf="option.setType === FORM_CONTROL_TYPE.INPUT_PASSWORD">
+  <input matInput type="password" [formControl]="control" [placeholder]="placeholder" autocomplete="off">
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+  <mat-error *ngIf="control.hasError('required')">{{'general.input' | translate}}{{this.i18n.label| translate}}</mat-error>
+  <mat-error *ngIf="control.hasError('maxlength')">
+    {{this.i18n.label | translate}}{{'general.maxLength' | translate}} : {{option.setOption['max']}}</mat-error>
+  <mat-error *ngIf="control.hasError('minlength')">
+    {{this.i18n.label | translate}}{{'general.minLength' | translate}} : {{option.setOption['min']}}</mat-error>
+  <mat-error *ngIf="control.hasError('pattern')">
+    {{this.i18n.label | translate}}{{'general.onlyNumber' | translate}}</mat-error>
+</mat-form-field>
+
+<mat-radio-group [formControl]="control" class="radio-group" *ngIf="option.setType === FORM_CONTROL_TYPE.RADIO">
+  <mat-radio-button *ngFor="let selection of option.setOption['selection']" class="radio-button" [value]="selection.value">
+    {{selection.label}}
+  </mat-radio-button>
+</mat-radio-group>
+
+<div class="checkbox-section" *ngIf="option.setType === FORM_CONTROL_TYPE.CHECKBOX">
+  <mat-checkbox *ngFor="let sel of option.setOption['selection']; let i = index"
+      class="checkbox-margin"
+      (click)="$event.stopPropagation()"
+      (change)="$event ? getCheckValue(sel.value) : null"
+      [checked]="selection.isSelected(sel.value)"
+      [labelPosition]="checkLabelPosition">
+    {{sel.label}}
+  </mat-checkbox>
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+</div>
+
+<mat-form-field class="form-field" floatLabel="always" appearance="outline" *ngIf="option.setType === FORM_CONTROL_TYPE.SELECT">
+  <mat-select [formControl]="control" *ngIf="loadOption">
+    <mat-option *ngFor="let option of loadOption" [value]="option.value">
+      {{option.label}}
+    </mat-option>
+  </mat-select>
+  <!-- <mat-hint *ngIf="i18n.desc">{{this.i18n.desc | translate}}</mat-hint> -->
+</mat-form-field>
+
+
+<mat-form-field class="form-field" class="font-color" appearance="outline" *ngIf="option.setType === FORM_CONTROL_TYPE.COLOR_PICKER">
+  <input matInput [style.color]="value" [style.background]="value" [(colorPicker)]="value" [cpOutputFormat]="option.setOption['OutputFormat']" (colorPickerOpen)="onEventLog('colorPickerOpen', $event)"
+      (colorPickerClose)="onEventLog('colorPickerClose', $event)" (cpInputChange)="onEventLog('cpInputChange', $event)"
+      (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)" (cpSliderDragEnd)="onEventLog('cpSliderDragEnd', $event)"
+      [cpPosition]="'right'"
+      [formControl]="control"/>
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+</mat-form-field>
+
+<mat-form-field class="form-field" appearance="outline" *ngIf="option.setType === FORM_CONTROL_TYPE.DATE_SELECTOR">
+  <input matInput  [formControl]="control"  [matDatepicker]="picker" [placeholder]="placeholder">
+  <mat-datepicker-toggle matSuffix [for]="picker">
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+</mat-form-field>
+
+<mat-form-field class="form-field" floatLabel="never" *ngIf="option.setType === FORM_CONTROL_TYPE.TEXTAREA">
+  <label>{{this.i18n.label | translate}}</label>
+  <textarea [formControl]="control" [placeholder]="placeholder"></textarea>
+  <mat-hint>{{this.i18n.desc | translate}}</mat-hint>
+</mat-form-field>

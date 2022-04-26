@@ -1,0 +1,15 @@
+<mat-card class="card card--size-sm">
+  <mat-card-title><i class="material-icons">info</i></mat-card-title>
+  <mat-card-content>
+    <p>{{ 'System.copyright' | translate}}</p>
+    <p>{{ 'System.declaration' | translate}}</p>
+    <p>{{ 'System.status' | translate}}: <span *ngIf="serverInfo">{{serverInfo.status}}</span></p>
+    <p>{{ 'System.product' | translate}}: <span *ngIf="serverInfo">{{serverInfo.productName}}</span></p>
+    <p>{{ 'System.serial' | translate}}: <span *ngIf="serverInfo">{{serverInfo.authorizedSerialNumber}}</span></p>
+    <p *ngIf="serverInfo && serverInfo.accessFrom !== '0'">{{ 'System.startTime' | translate}}: <span>{{serverInfo.accessFrom}}</span></p>
+    <p>{{ 'System.expireTime' | translate}}: <span *ngIf="serverInfo">{{serverInfo.accessTo}}</span></p>
+    <p>{{ 'System.coreVersion' | translate}}: <span *ngIf="serverInfo">{{serverInfo.coreVersion}}</span></p>
+    <p>{{ 'System.interfaceVersion' | translate}}: <span *ngIf="serverInfo">{{serverInfo.uiVersion}}</span></p>
+    <p>{{ 'System.authorizedTarget' | translate}}: <span *ngIf="serverInfo">{{serverInfo.authorizedTarget}}</span></p>
+  </mat-card-content>
+</mat-card>

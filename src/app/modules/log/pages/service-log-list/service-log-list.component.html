@@ -1,0 +1,138 @@
+<div fxLayout="column wrap" fxLayoutGap="20px">
+  <div class="form form--display-inline" [formGroup]="searchForm" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="10px">
+    <div fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutGap="10px">
+      <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 220px">
+        <mat-form-field class="form__field" appearance="outline">
+          <input matInput formControlName="trustAppName" id="trustAppName" name="trustAppName" placeholder="{{ 'Application.title' | translate}}">
+          <mat-error>{{ 'Message.warn.maxLength' | translate }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 220px">
+        <mat-form-field class="form__field" appearance="outline">
+          <input matInput formControlName="clientIp" id="clientIp" name="clientIp" placeholder="{{ 'general.ip' | translate}}">
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 220px">
+        <mat-form-field class="form__field" appearance="outline">
+          <mat-select placeholder="{{ 'Log.class' | translate}}" formControlName="logClass" multiple>
+            <mat-option *ngFor="let logClazz of logClassList" id="logClazz" name="logClazz" [value]="logClazz">{{'Log.service_class.' + logClazz | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 250px">
+        <mat-form-field class="form__field" appearance="outline">
+          <input matInput formControlName="bLogDate" [matDatepicker]="picker" [max]="searchForm.value.eLogDate" readonly
+           id="startTime" name="startTime" placeholder="{{ 'Log.startTime' | translate}}">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 250px">
+        <mat-form-field class="form__field" appearance="outline">
+          <input matInput formControlName="eLogDate" [matDatepicker]="picker2" [min]="searchForm.value.bLogDate" readonly
+           id="expireTime" name="expireTime" placeholder="{{ 'Log.expireTime' | translate}}">
+          <mat-datepicker-toggle matSuffix [for]="picker2">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxFlex="1 1 auto" fxFlex.lt-md="1 1 100%">
+        <button class="btn btn--theme-primary form__btn" mat-raised-button type="button" id="search-btn" name="search-btn" (click)="search()">
+          {{ 'general.search' | translate}}
+        </button>
+      </div>
+    </div>
+    <div class="external-search" fxFlex="1 1 auto" fxLayout="column wrap">
+      <div fxFlex="1 1 auto" class="external-search__btn">
+        <span class="external-search__text">{{ 'general.external' | translate}}{{ 'general.search' | translate}}</span>
+        <i class="material-icons" (click)="toggle()" *ngIf="getExpandedState() === 'collapsed'">expand_more</i>
+        <i class="material-icons" (click)="toggle()" *ngIf="getExpandedState() === 'expanded'">expand_less</i>
+      </div>
+      <!-- 進階查詢 -->
+      <div class="external-search__container" fxFlex="1 1 auto" fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutGap="10px"
+        [class.expanded]="expandedChange | async" [@bodyExpansion]="getExpandedState()">
+        <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 220px">
+          <mat-form-field class="form__field" appearance="outline">
+            <input matInput formControlName="appInfo" id="appInfo" name="appInfo" placeholder="{{ 'Application.info' | translate}}">
+          </mat-form-field>
+        </div>
+        <div fxFlex="1 1 auto" fxFlex.gt-xs="1 1 220px">
+          <mat-form-field class="form__field" appearance="outline">
+            <mat-select placeholder="{{ 'Log.errorType' | translate}}" formControlName="errorType">
+              <mat-option *ngFor="let eType of errorCodeTypes" [value]="eType">{{'Log.service_errorCode_type.' + eType | translate}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="1 1 auto">
+    <mat-card>
+      <mat-table [dataSource]="serviceLogDataSource">
+        <ng-container matColumnDef="logDate">
+          <mat-header-cell *matHeaderCellDef>{{ 'Log.date' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'Log.date' | translate}} : </span> {{element.logDate | date:'yyyy/MM/dd HH:mm:ss'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="account">
+          <mat-header-cell *matHeaderCellDef>{{ 'Application.title' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'Application.title' | translate}} : </span> {{element.account.userAccount}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="clientIp">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.ip' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'general.ip' | translate}} : </span> {{element.clientIp}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="logClass">
+          <mat-header-cell *matHeaderCellDef>{{ 'Log.class' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'Log.class' | translate}} : </span> {{ 'Log.service_class.' + element.logClass | translate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="operation">
+          <mat-header-cell *matHeaderCellDef>{{ 'Log.operation' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'Log.operation' | translate}} : </span> {{ 'Log.service_operation.' + element.operation | translate}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="errorCodeType">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.status' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'general.status' | translate}} : </span> {{ 'Log.service_errorCode_type.' + ((element.respCode === 0)? 1 : 2) | translate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="resp">
+          <mat-header-cell *matHeaderCellDef>{{ 'Log.response' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element"><span class="rwd-title" fxHide.gt-sm>{{ 'Log.response' | translate}} : </span> [ {{element.respCode}} ] {{element.respMsg}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>{{ 'general.operation' | translate}}</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <span class="rwd-title" fxHide.gt-sm>{{ 'general.operation' | translate}} : </span>
+            <button mat-stroked-button type="button" class="btn btn--theme-basic" (click)="openDetailDialog(element.logId)">
+              <i class="material-icons">info</i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="noData">
+          <mat-cell *matCellDef="let element">
+            {{ 'general.noData' | translate}}
+          </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" fxHide.lt-md></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns; when: showData"></mat-row>
+
+        <mat-row *matRowDef="let row; columns: ['noData']; when: !showData"
+            [@detailExpand]="(totalCount === 0) ? 'expanded' : 'collapsed'"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+          (page)="changePage($event)" *ngIf="totalCount !== 0"></mat-paginator>
+    </mat-card>
+  </div>
+</div>
+
+

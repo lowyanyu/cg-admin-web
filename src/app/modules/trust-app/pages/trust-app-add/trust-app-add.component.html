@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="addForm" [editable]="isEditable">
+      <ng-template matStepLabel>{{'Application.add' | translate}}</ng-template>
+      <form [formGroup]="addForm" (ngSubmit)="submitApp(stepper)" id="addAppForm" name="addAppForm" class="form"
+          fxLayout="column" fxLayoutGap="20px">
+        <div fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-sm="row">
+          <div class="form__group required" fxLayout="column" fxFlex="1 1 auto">
+            <label class="form__label">{{ 'general.name' | translate}}</label>
+            <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+              <input type="text" formControlName="appName" matInput required>
+              <mat-error>{{ 'Message.notify.name' | translate}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form__group required" fxLayout="column" fxFlex="1 1 auto">
+            <label class="form__label">{{ 'general.type' | translate}}</label>
+            <div class="form__radio-field" fxFlex="1 1 auto">
+              <mat-radio-group formControlName="appType">
+                <mat-radio-button [value]="APP_TYPE.GENERAL">{{ 'Application.type.2' | translate}}</mat-radio-button>
+                <mat-radio-button [value]="APP_TYPE.MOBILE">{{ 'Application.type.1' | translate}}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__group" fxLayout="column" fxFlex="1 1 auto">
+          <label class="form__label">{{ 'general.description' | translate}}</label>
+          <mat-form-field class="form__field" appearance="outline" fxFlex="1 1 auto">
+            <textarea matInput [formControl]="addForm.controls['desc']"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="form__btn-row" fxFlex="1 1 auto">
+          <button mat-raised-button type="submit" class="btn btn--theme-primary">{{ 'general.nextStep' | translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>{{'Application.agent' | translate}}</ng-template>
+      <app-trust-app-agent-list *ngIf="newApp" [appId]="newApp.appId"></app-trust-app-agent-list>
+      <div class="form__btn-row" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row"
+        fxLayoutGap.gt-xs="10px" fxLayoutGap.gt-sm="20px" fxLayoutGap.gt-md="20px" fxLayoutGap.gt-lg="30px">
+        <div fxFlex="1 1 auto" fxFlexOffset="40px">
+          <button mat-raised-button type="button" class="btn btn--theme-primary" matStepperNext>{{ 'general.nextStep' | translate}}</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step *ngIf="newApp && newApp.appType === APP_TYPE.GENERAL">
+      <ng-template matStepLabel>{{ 'general.permission' | translate}}</ng-template>
+      <div>
+        <app-trust-app-perms-list [appId]="newApp.appId" [isStepperSet]="true"></app-trust-app-perms-list >
+      </div>
+      <div class="form__btn-row" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row"
+        fxLayoutGap.gt-xs="10px" fxLayoutGap.gt-sm="20px" fxLayoutGap.gt-md="20px" fxLayoutGap.gt-lg="30px">
+        <div fxFlex="1 1 auto">
+          <button mat-raised-button type="button" class="btn btn--theme-basic" matStepperPrevious>{{ 'general.previousStep' | translate}}</button>
+        </div>
+        <div fxFlex="1 1 auto">
+          <button mat-raised-button type="button" class="btn btn--theme-primary" (click)="submitPerms(stepper)">{{ 'general.nextStep' | translate}}</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>{{ 'general.complete' | translate}}</ng-template>
+      <p>{{'Message.success.completeApplicationStep' | translate}}</p>
+      <div class="form__btn-row" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row" fxLayoutAlign="center"
+        fxLayoutGap.gt-xs="10px" fxLayoutGap.gt-sm="20px" fxLayoutGap.gt-md="20px" fxLayoutGap.gt-lg="30px">
+        <button mat-raised-button type="button" class="btn btn--theme-primary" *hasPermission="MANAGEMENT_PERMISSION.CG_ApplicationGenApiKey" (click)="getAppKey()">
+          {{'Application.downloadAPIKey' | translate}}
+        </button>
+      </div>
+      <div class="form__btn-row" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-xs="row" fxLayoutAlign="center"
+          fxLayoutGap.gt-xs="10px" fxLayoutGap.gt-sm="20px" fxLayoutGap.gt-md="20px" fxLayoutGap.gt-lg="30px">
+        <button mat-raised-button type="button" class="btn btn--theme-primary" routerLink="/management/system/trustApp/list">{{ 'general.complete' | translate}}</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>

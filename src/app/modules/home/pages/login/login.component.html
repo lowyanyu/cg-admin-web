@@ -1,0 +1,27 @@
+<div class="login">
+  <div class="login__container">
+    <mat-card class="card login__card">
+      <mat-card-content>
+        <mat-card-title class="card__header">{{ 'general.welcome' | translate}}</mat-card-title>
+        <form class="form login__form" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+          <div class="form__row">
+            <mat-form-field class="form__field" appearance="outline">
+              <mat-label>{{ 'general.account' | translate}}</mat-label>
+              <input matInput type="text" formControlName="loginAccount" />
+              <i matSuffix class="material-icons">person</i>
+            </mat-form-field>
+          </div>
+          <div class="form__row">
+            <mat-form-field class="form__field" appearance="outline">
+              <mat-label>{{ 'general.password' | translate}}</mat-label>
+              <input matInput type="password" formControlName="loginPwd" autocomplete="off"/>
+              <i matSuffix class="material-icons">lock</i>
+            </mat-form-field>
+          </div>
+          <button class="btn btn--theme-primary login__btn" type="submit" mat-raised-button>{{ 'general.login' | translate}}</button>
+          <span class="alert alert--theme-danger" *ngIf="alertMessage" type="danger">{{alertMessage}}</span>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

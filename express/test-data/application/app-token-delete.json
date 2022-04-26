@@ -1,0 +1,21 @@
+{
+	"errorCode": 66001,
+	"errorMessage": "Delete token success. op : delete",
+	"data": {
+		"amount": 2,
+		"result": [
+			{
+				"targetId": 203,
+				"targetName": "test",
+				"errorCode": 66001,
+				"errorMessage": "delete token failed."
+			},
+			{
+				"targetId": 204,
+				"targetName": "test123",
+				"errorCode": 0,
+				"errorMessage": "delete token success."
+			}
+		]
+	}
+}

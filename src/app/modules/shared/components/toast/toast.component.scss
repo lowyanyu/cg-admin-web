@@ -1,0 +1,44 @@
+.cg-toast {
+	position: fixed;
+  width: 20em;
+  z-index: 999999;
+
+  &--position-top-right {
+    top: 20px;
+	  right: 20px;
+  }
+
+  &--position-top-left {
+    top: 20px;
+	  left: 20px;
+  }
+
+  &--position-bottom-right {
+    bottom: 20px;
+	  right: 20px;
+  }
+
+  &--position-bottom-left {
+    bottom: 20px;
+	  left: 20px;
+  }
+
+  &--position-top-center {
+    top: 20px;
+    left: 50%;
+      margin-left: -10em;
+  }
+
+  &--position-bottom-center {
+    bottom: 20px;
+    left: 50%;
+      margin-left: -10em;
+  }
+
+  &--position-toast-center {
+    left: 50%;
+    top: 50%;
+      min-width: 20vw;
+      transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,13 @@
+<div [ngClass]="{'cg-toast cg-widget': true,
+    'cg-toast--position-top-right': position === 'top-right',
+    'cg-toast--position-top-left': position === 'top-left',
+    'cg-toast--position-bottom-right': position === 'bottom-right',
+    'cg-toast--position-bottom-left': position === 'bottom-left',
+    'cg-toast--position-top-center': position === 'top-center',
+    'cg-toast--position-bottom-center': position === 'bottom-center',
+    'cg-toast--position-center': position === 'center'}">
+  <cg-toast-item *ngFor="let msg of messages; let i=index" [message]="msg" [index]="i"
+      (onclose)="onMessageClose($event)">
+  </cg-toast-item>
+</div>
+
